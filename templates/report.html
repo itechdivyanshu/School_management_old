@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>School Management</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        @page { size: auto;  margin: 0mm; }
+        @font-face {
+            font-family: 'sed';
+            src: url("{% static 'resources/fonts/sed.ttf'%}");
+          }
+          @font-face {
+            font-family: 'mont';
+            src: url("{% static 'resources/fonts/mont.ttf'%}");
+          }
+          @font-face {
+            font-family: 'consert';
+            src: url("{% static 'resources/fonts/consertone.ttf'%}");
+          }
+        #container{height: 100%;}
+        #container .top{
+            position: fixed;
+            width: 100%;
+            height: 56px;
+            background-color: #2874f0;
+            color: #f0f0f0;
+            z-index: 10;
+        }
+        #container .top .name{
+            color: #f0f0f0;
+            font-family: 'sed';
+            font-size: 20px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-10%,-50%)
+        }
+        #main{
+            height: 100%;
+        }
+        #box{
+            width: 600px;
+            height: 500px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            box-shadow: 0 1px 6px 0 rgba(32,33,36,0.20);
+            border-radius: 5px;
+        }
+        #box .name{padding-bottom: 10px; width: 100%;margin-top: 10px ;border-bottom: 1px solid rgba(216, 216, 216, 0.644);}
+        #box .name .namebox{
+            width: 90%;
+            display: grid;
+            grid-template-columns: auto auto;
+            font-size: 20px;
+            font-family: 'mont';
+            font-weight: 800;
+        }
+        #box .name .namebox input[type=text]{padding: 5px 10px;border: 0;border-bottom: 1px solid #ccc;outline: none;transition: 0.4s ease-in;}
+        #nameplate{
+            padding-left: 40%;
+        }
+        #box .name .namebox input[type=text]:focus{border-bottom: 1.5px solid rgb(46, 163, 202);}
+        #genbtn{position: absolute; bottom: 40px;left: 50%;transform: translateX(-50%);
+            border: none;padding: 10px;border-radius: 10px; outline: none;
+            transition: 0.1s ease;
+        }
+        #genbtn:hover{background: rgb(172, 172, 172);cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="top">
+            <div class="name">
+                School Management System
+            </div>
+        </div>
+        <div id="main">
+            <div id="box">
+                <form action="report/final" method="post">
+                    {% csrf_token %}
+                    <div class="name">
+                        <div class="namebox">
+                            <div id="nameplate">Name:</div>
+                            <select name="name" id="nameselect">
+                                {% for stu in student %}
+                                    <option value="{{stu.adm_no}}">{{stu.first_name}} {{stu.last_name}}</option>                                   
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <div class="namebox">
+                            <div id="nameplate">Remarks:</div>
+                            <input type="text" name="remarks" placeholder="Remarks" id="remarstat"/>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <div class="namebox">
+                            <div id="nameplate">Height:</div>
+                            <input type="text" name="Height" placeholder="height" id="height"/>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <div class="namebox">
+                            <div id="nameplate">Weight:</div>
+                            <input type="text" name="weight" placeholder="weight" id="weight"/>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <div class="namebox">
+                            <div id="nameplate">Mark in Physical Education:</div>
+                            <input type="text" name="ped" placeholder="Mark in Physical Education" id="ped"/>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <div class="namebox">
+                            <div id="nameplate">Mark in Work Education:</div>
+                            <input type="text" name="wed" placeholder="Mark in Work Education" id="wed"/>
+                        </div>
+                    </div>
+                    <div class="name">
+                        <div class="namebox">
+                            <div id="nameplate">Mark in Art Education:</div>
+                            <input type="text" name="aed" placeholder="Mark in Art Education" id="aed"/>
+                        </div>
+                    </div>
+                    <button type="submit"id="genbtn">Generate</div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        /*document.getElementById("b").addEventListener("click", ()=>{
+            alert(document.getElementById("name").value)
+        })*/
+    </script>
+</body>
+</html>

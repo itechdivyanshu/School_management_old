@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>School Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        @font-face {
+          font-family: 'take';
+          src: url("{% static 'resources/fonts/take.ttf'%}");
+        }
+      </style>
+    <link rel="stylesheet" href="{% static 'resources/css/login.css'%}">
+
+</head>
+<body>
+        {% csrf_token %}
+    <div id="watermark">
+        <img src="{% static 'resources/images/kc1.png'%}">
+    </div>
+    <div id="kc">
+        <img src="{% static 'resources/images/kc.png'%}">
+    </div>
+    <div class="login" id="login">
+       <div class="cabout">
+           <div class="title">Kedar Construction</div>
+           <p>I can't change the direction of the wind, but I can adjust my sails to always reach my destination, Change your thoughts and you change your world.</p>
+       </div>
+       <form action="login" method="post">
+        {% csrf_token %}
+       <section class="usr">
+        <input maxlength="200" name="username" placeholder="username..." id="usr">
+        <svg class="jss28" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="font-size: inherit;"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg>
+        </section>
+        <section class="usr pass">
+           <input maxlength="200" name="password" type="password" placeholder="password..." id="pass">
+            <svg class="jss28" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="font-size: inherit;"><path fill="none" d="M0 0h24v24H0V0z"></path><g><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"></path></g></svg>
+        </section>
+        <button type="submit" class="loginbtn" id="loginbtn">LOG IN</div>
+        </form>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div><!--
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>-->
+    <script src="{% static 'resources/js/login1.js'%}"></script>
+</body>
+</html>

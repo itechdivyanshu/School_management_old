@@ -1,0 +1,5 @@
+--pip install Django==3.0.2
+--pip install Pillow==2.2.2
+--mysql,mysqlserver
+--pip install openpyxl
+--pip install mysqlclient

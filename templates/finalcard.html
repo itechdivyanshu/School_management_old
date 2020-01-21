@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        @page { size: auto;  margin: 0mm; }
+        #cbseimage{
+            position: absolute;
+            top: 40px;
+            left: 40px;
+        }
+        #davimage{
+            position: absolute;
+            top: 50px;
+            right:40px;
+        }
+        #cbseimage img{width: 200px;height: 160px;}
+        #schoolname{font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+        }
+        #scdetail{
+            position: absolute;
+            top: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            font-weight: 400;
+        }
+        #scdetail div{font-size: 18px;}
+        #studetail1{
+            font-size: 15px;
+            font-weight: 500;
+            position: absolute;
+            top: 250px;
+            left: 10%;
+            transform: translateX(-10%);
+        }
+        #studetail2{
+            font-size: 15px;
+            font-weight: 500;
+            position: absolute;
+            top: 250px;
+            right: 10%;
+            transform: translateX(-10%);
+        }
+        #marksbox{
+            width: 80%;
+            height: auto;
+            position: absolute;
+            top: 350px;
+            left: 18%;
+            transform: translateX(-10%);
+            border: 1px solid black;
+        }
+        #marksbox div{text-align: center; display:table-row;overflow: hidden;border-bottom: 1px solid black;}
+        #marksbox div div{text-align: center;height: 100%;font-size: 18px;border-right: 2px solid black;display: table-cell;vertical-align: middle;width: 10%;}
+        #header{background: rgba(241, 154, 23, 0.521);}
+        #re{position: absolute;top: 600px;left: 30%;transform: translateX(-30%);}
+    </style>
+</head>
+<body>
+    <div id="cbseimage"><img src="{% static 'resources/images/cbse-logo.png'%}"></div>
+    <div id="davimage"><img src="{% static 'resources/images/LOGO.png'%}"></div>
+    <div id="schoolname"><B>D.A.V. Model School</B></div>
+    <div id="scdetail"><pre>
+        Affiliated to CBSE, Affiliation No. 223366
+            J.M. Sengupta Road, Durgapur-713205
+    Ph. 011-44556655, Email : davmodeldurgapur@gmail.com
+    <div><b>
+        Academic Session: 2019-2020
+                Report Card
+    </b></div>
+    </pre></div>
+    <div id="studetail1"><pre>
+    Student Name: {{value.first_name}} {{value.last_name}} 
+    Father's Name: {{value.fathers_name}}   
+    Mother's Name: {{value.mothers_name}} 
+    Class / Section: {{value.class_in}}
+    </pre></div>
+    <div id="studetail2"><pre>
+    D.O.B - {{value.date_of_birth}}
+    Height: {{value.height}}   
+    Weight: {{value.weight}}
+    Roll No: {{value.roll_no}}
+    </pre></div>
+    <div id="marksbox">
+        <div id="header">
+            <div>Subjects</div>
+            <div>Marks in Practical</div>
+            <div>Marks in Theory</div>
+            <div>Total</div>
+        </div>
+        {% for i in marks %}
+        <div>
+            <div>{{i.subject}}</div>
+            <div id="{{c}}">{{i.marks_in_practical}}</div>
+            <div id="{{c}}{{c}}">{{i.marks_in_theory}}</div>
+            <div id="{{c}}{{c}}{{c}}">Total</div>
+        </div>
+        {% endfor %}
+        <div>
+            <div>Physical Education</div>
+            <div>-</div>
+            <div>-</div>
+            <div>{{value.ped}}</div>
+        </div>
+        <div>
+            <div>Work Education</div>
+            <div>-</div>
+            <div>-</div>
+            <div>{{value.wed}}</div>
+        </div>
+        <div>
+            <div>Art Education</div>
+            <div>-</div>
+            <div>-</div>
+            <div>{{value.aed}}</div>
+        </div>
+    </div>
+    <div id="re">
+        <b>Teacher's Remarks:</b> <u>{{value.remark}}</u>
+    </div>
+</body>
+</html>
