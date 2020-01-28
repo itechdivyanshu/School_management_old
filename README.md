@@ -6,7 +6,7 @@ A school management software made with django
 --pip install Pillow==2.2.2<br>
 --mysql,mysqlserver(like xampp..)<br>
 --pip install openpyxl<br>
---pip install mysqlclient<br>
+--pip install mysqlclient==1.4.6<br>
 <br>
 <b>
  commands:</b><br>
