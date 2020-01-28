@@ -2,4 +2,4 @@
 --pip install Pillow==2.2.2
 --mysql,mysqlserver
 --pip install openpyxl
---pip install mysqlclient
+--pip install mysqlclient==1.4.6
