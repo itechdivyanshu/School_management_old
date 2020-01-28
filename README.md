@@ -1,6 +1,8 @@
 # School_management
 A school management software made with django
 
+<b>Preview at:<b>
+http://scoolmanage.herokuapp.com/
 <b>Setup:</b><br>
 --pip install Django==3.0.2<br>
 --pip install Pillow==2.2.2<br>
